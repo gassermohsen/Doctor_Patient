@@ -11,6 +11,17 @@ if ($mysqli -> connect_errno) {
   exit();
 }
 
+ 
+$key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+ function encryptthis($data, $key) { $encryption_key = base64_decode($key);
+  $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+   $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv); 
+} function decryptthis($data, $key) {
+ $encryption_key = base64_decode($key);
+ list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null); return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);}
+
+
 
 
 
@@ -20,17 +31,19 @@ if (isset($_POST['Register'])) {
 
 
 
+
 	$UserID 	= $mysqli -> real_escape_string($_POST['UserID']);
 	$Username 	= $mysqli -> real_escape_string($_POST['Name']);
+	$Username	= encryptthis($Username,$key);
 	$Address 	= $mysqli -> real_escape_string($_POST['Address']);
+	$Address		= encryptthis($Address,$key);
 	$ContactNumber	 = $mysqli -> real_escape_string($_POST['ContactNumber']);
 	$Email 		=  $mysqli -> real_escape_string($_POST['Email']);
+	$Email	= encryptthis($Email,$key);
 	$Password 	= $mysqli -> real_escape_string($_POST['password']);
 	$bloodtype 	= $mysqli -> real_escape_string($_POST['bloodtype']);
     
-     $target="images/".basename($_FILES['image']['name']);
-    $image=$_FILES['image']['name'];
-
+  
 
 
 
@@ -82,7 +95,7 @@ if(count($errors)==0){
 
 	$Password=md5($Password);
 
-	$sql = "INSERT INTO  patients (UserID, Name, Address, ContactNumber, Email, Password,Bloodtype,image) VALUES ('$UserID','$Username','$Address','$ContactNumber','$Email','$Password','$bloodtype',$image) ";
+	$sql = "INSERT INTO  patients (UserID, Name, Address, ContactNumber, Email, Password,Bloodtype) VALUES ('$UserID','$Username','$Address','$ContactNumber','$Email','$Password','$bloodtype') ";
     
    
 
@@ -92,7 +105,6 @@ if(count($errors)==0){
     
  
 }
-    if(move_uploaded_file($_FILES['']))
 
 
   $_SESSION['UserID']=$UserID;
