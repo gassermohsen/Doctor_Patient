@@ -1,12 +1,12 @@
 Please Read this :-
 
-to start the project you have to go to applicationlayer (FOLDER) and open the Doctorpatient.php
+to start the project you have to go to applicationlayer (FOLDER) and open the Doctorpatient.php.
 
 The project database structure is in the datalayer (FOLDER) - SQL DATABASE EXPORT 
-and its called registration(1)
+and its called registration(1).
 
 
-There is an expected error in the patient and doctor login but once you login this error will vanish
+There is an expected error in the patient and doctor login but once you login this error will vanish.
 
 
 
@@ -18,7 +18,7 @@ system admin you can login as an admin and got user roles.
 
 
 
-encryption and decryption : we used the (AES) algorithm you can find the encryption code in this path : Doctor_patient/datalayer/server.php
+encryption and decryption : we used the (AES) algorithm you can find the encryption code in this path : Doctor_patient/datalayer/server.php.
 
 and the decrypted part in this path : Doctor_patient/presentationlayer/patient/index.php
 
