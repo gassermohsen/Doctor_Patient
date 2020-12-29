@@ -66,13 +66,13 @@
 
 	 	   <br>
 	 	   <br>
-	 	   <label> Email : <?php echo $col['Email']; ?></label>
+	 	   <label> Email : <?php echo $Email= decryptthis($col['Email'],$key); ?></label>
 	 	   	 	   <br>
 	 	   <br>
-	 	   <label> Name : <?php echo $col['Name']; ?></label>
+	 	   <label> Name : <?php echo $Name= decryptthis($col['Name'],$key); ?></label>
 	 	   	 	   <br>
 	 	   <br>
-	 	   <label> Address : <?php echo $col['Address']; ?></label>
+	 	   <label> Address : <?php echo $Address= decryptthis( $col['Address'],$key); ?></label>
 	 	   	 	   <br>
 	 	   <br>
 	 	   <label> Contact Number : <?php echo $col['ContactNumber']; ?></label>
